@@ -70,6 +70,7 @@ module.exports = {
       unnamedComponents: 'arrow-function',
     }],
     'react/no-array-index-key': 'error',
+    'react/button-has-type': 'off',
     'react/jsx-closing-bracket-location': 'error',
     'react/jsx-closing-tag-location': 'error',
     'react/jsx-first-prop-new-line': ['error', 'multiline-multiprop'],

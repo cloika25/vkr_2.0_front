@@ -1,23 +1,12 @@
 import React from 'react';
+import { Button as MButton } from '@mui/material';
 import { ButtonProps } from './Button.types';
 
 /** Кнопка */
-const Button: React.FC<ButtonProps> = ({
-  title, className, onClick, isLoading,
-}) => (
-  <button
-    className={`
-      bg-slate-200 border-4 border-slate-200 p-2 rounded-md 
-      ${!isLoading && 'hover:border-slate-300'} 
-      transition-all 
-      ${className}
-    `}
-    disabled={isLoading}
-    onClick={onClick}
-    type="button"
-  >
-    <div className={isLoading ? 'animate-spin' : ''}>{isLoading ? 'Загрузка' : title}</div>
-  </button>
+const Button: React.FC<ButtonProps> = ({ children, ...props }) => (
+  <MButton {...props}>
+    {children}
+  </MButton>
 );
 
 export default Button;
