@@ -7,8 +7,7 @@ import {
 } from 'react-router-dom';
 
 import MainLayout from './components/MainLayout';
-import CarsListView from './views/CarsListView';
-import CarView from './views/CarView';
+import Login from './views/Login';
 
 const App: React.FC = () => (
   <div className="App">
@@ -17,16 +16,11 @@ const App: React.FC = () => (
         <Route
           element={<MainLayout />}
           path="/"
-        >
-          <Route
-            element={<CarsListView />}
-            path="/cars"
-          />
-          <Route
-            element={<CarView />}
-            path="/cars/:id"
-          />
-        </Route>
+        />
+        <Route
+          element={<Login />}
+          path="/login"
+        />
       </Routes>
     </Router>
   </div>

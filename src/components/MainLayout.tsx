@@ -2,7 +2,7 @@ import React, { PropsWithChildren } from 'react';
 import { Outlet, useNavigate } from 'react-router-dom';
 import { ReactComponent as MenuIcon } from '../assets/menu.svg';
 import { ReactComponent as UserIcon } from '../assets/user.svg';
-import Button from './Button';
+import { Button } from './ui';
 
 /** Лайаут меню */
 const TopBar: React.FC = () => (

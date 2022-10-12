@@ -1,18 +1,8 @@
 import React from 'react';
-
-interface Props {
-  /** Тайтл кнопки */
-  title: string;
-  /** Доп стили */
-  className?: string;
-  /** Обработчик нажатия */
-  onClick?: () => void;
-  /** Находится ли кнопка в состоянии загрузки */
-  isLoading?: boolean;
-}
+import { ButtonProps } from './Button.types';
 
 /** Кнопка */
-const Button: React.FC<Props> = ({
+const Button: React.FC<ButtonProps> = ({
   title, className, onClick, isLoading,
 }) => (
   <button
