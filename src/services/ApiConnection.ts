@@ -32,7 +32,9 @@ ApiConnection.interceptors.response.use((response) => {
 /** Вставка токена в хедер запроса */
 ApiConnection.interceptors.request.use((config) => {
   const token = getToken();
-  // eslint-disable-next-line no-param-reassign
-  config.headers!.Authorization = token;
+  if (token) {
+    // eslint-disable-next-line no-param-reassign
+    config.headers!.Authorization = token;
+  }
   return config;
 });

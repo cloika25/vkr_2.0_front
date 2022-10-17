@@ -10,4 +10,10 @@ enum Status {
   Success,
 }
 
+export enum ValidationError {
+  RequiredField = 'Поле обязательно для заполнения',
+  EmailField = 'Проверьте правильность электронной почты',
+  ConfirmPassword = 'Пароли не совпадают'
+}
+
 export default Status;

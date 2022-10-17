@@ -8,6 +8,7 @@ import {
 
 import MainLayout from './components/MainLayout';
 import Login from './views/Login';
+import Register from './views/Register';
 
 const App: React.FC = () => (
   <div className="App">
@@ -20,6 +21,10 @@ const App: React.FC = () => (
         <Route
           element={<Login />}
           path="/login"
+        />
+        <Route
+          element={<Register />}
+          path="/register"
         />
       </Routes>
     </Router>
