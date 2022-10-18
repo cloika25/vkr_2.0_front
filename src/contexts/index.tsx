@@ -1,8 +1,8 @@
 import { createContext } from 'react';
-import CarStore from '../stores/Car/CarStore';
-import CarsListStore from '../stores/CarsList/CarsListStore';
+import { EventsStore } from '../stores/Events/EventsStore';
+import { EventStore } from '../stores/Event/EventStore';
 
 export const storeContext = createContext({
-  carStore: new CarStore(),
-  carsListStore: new CarsListStore(),
+  eventsStore: new EventsStore(),
+  eventStore: new EventStore(),
 });

@@ -4,10 +4,11 @@ type ContainerProps = {
   className?: string;
   flex?: '1' | 'none' | 'initial' | 'auto';
   direction?: 'col' | 'col-reverse' | 'row' | 'row-reverse';
+  onClick?: React.MouseEventHandler<HTMLDivElement>;
 }
 
 export const Container: React.FC<PropsWithChildren<ContainerProps>> = ({
-  children, className, flex, direction,
+  children, className, flex, direction, onClick,
 }) => {
   let styles = 'flex ';
 
@@ -24,7 +25,10 @@ export const Container: React.FC<PropsWithChildren<ContainerProps>> = ({
   }
 
   return (
-    <div className={styles}>
+    <div
+      className={styles}
+      onClick={onClick}
+    >
       {children}
     </div>
   );

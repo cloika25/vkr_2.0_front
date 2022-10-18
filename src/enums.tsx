@@ -16,4 +16,6 @@ export enum ValidationError {
   ConfirmPassword = 'Пароли не совпадают'
 }
 
+export const DateFormat = 'YYYY.MM.DD';
+
 export default Status;
