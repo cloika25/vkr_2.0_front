@@ -1,9 +1,16 @@
-import { GetEventsByIdResponse, GetEventsResponse } from '../types/Events.types';
+import {
+  CreateEventForm, GetEventsByIdResponse, GetEventsResponse,
+} from '../types/Events.types';
 import { ApiConnection } from './ApiConnection';
 
 export class EventsService {
   static get RoutePrefix(): string {
     return '/Events';
+  }
+
+  static async create(data: CreateEventForm): Promise<{ id: string }> {
+    const response = await ApiConnection.post(this.RoutePrefix, data);
+    return response.data;
   }
 
   static async list(): Promise<GetEventsResponse> {

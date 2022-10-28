@@ -1,5 +1,7 @@
+import { observer } from 'mobx-react';
 import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import { Container } from '../components/Flex';
 import { useStores } from '../hooks/useStores';
 
 interface EventProps {
@@ -13,9 +15,23 @@ const Event: React.FC<EventProps> = () => {
     if (params.id) {
       eventStore.fetch(params.id);
     }
-    return eventStore.clearStore();
+    return () => {
+      eventStore.clearStore();
+    };
   }, []);
 
-  return (<div>{JSON.stringify(eventStore.viewModel.getRawData())}</div>);
+  return (
+    <Container
+      direction="col"
+      flex="1"
+    >
+      <h1>{eventStore.viewModel.fullName}</h1>
+      <div>
+        <span>{`start: ${eventStore.viewModel.dateStartFormatted}`}</span>
+        <br />
+        <span>{`end: ${eventStore.viewModel.dateEndFormatted}`}</span>
+      </div>
+    </Container>
+  );
 };
-export default Event;
+export default observer(Event);

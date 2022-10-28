@@ -9,7 +9,7 @@ interface EventShortCardProps {
 
 const EventShortCard: React.FC<EventShortCardProps> = ({ event, onClick }) => (
   <Container
-    className="p-2 border border-bgDefault hover:shadow-bgDefault hover:shadow-lg cursor-pointer min-w-[200px]"
+    className="p-2 border border-bgDefault hover:shadow-bgDefault hover:shadow-lg cursor-pointer min-w-[30%]"
     direction="col"
     onClick={onClick}
   >

@@ -1,38 +1,69 @@
 import { observer } from 'mobx-react';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import EventShortCard from '../components/Event/EventShortCard';
 import { Container, Row } from '../components/Flex';
+import { Button } from '../components/ui';
 import { useStores } from '../hooks/useStores';
+import { CreateEventModal } from '../components/Event/CreateEventModal';
 
-interface EventsProps {
-}
+interface EventsProps { }
 
 const Events: React.FC<EventsProps> = () => {
   const { eventsStore } = useStores();
   const navigate = useNavigate();
+  const [showCreateModel, setShowModel] = useState(false);
 
   useEffect(() => {
     eventsStore.fetch();
   }, []);
 
+  const openCreateModal = () => {
+    setShowModel(true);
+  };
+
+  const closeCreateModel = () => {
+    setShowModel(false);
+  };
+
+  const navigateToEvent = (id: string) => {
+    navigate(`/events/${id}`);
+  };
+
+  const createEventHandler = () => {
+    setShowModel(false);
+    eventsStore.fetch();
+  };
+
   return (
     <Container>
       <div>
-        <Row className="gap-3 flex-wrap">
-          {eventsStore.viewModel.map(
-            (event) => (
+        <Row className="justify-center">
+          <Button
+            onClick={() => {
+              openCreateModal();
+            }}
+          >
+            Добавить мероприятие
+          </Button>
+        </Row>
+        <Row className="gap-3 flex-wrap justify-evenly">
+          {
+            eventsStore.viewModel.map((event) => (
               <EventShortCard
                 key={event.id}
                 event={event}
-                onClick={() => {
-                  navigate(`/events/${event.id}`);
-                }}
+                onClick={() => navigateToEvent(event.id)}
               />
-            ),
-          )}
+            ))
+          }
         </Row>
       </div>
+      <CreateEventModal
+        onClose={closeCreateModel}
+        onSuccess={createEventHandler}
+        open={showCreateModel}
+      />
     </Container>
   );
 };
