@@ -17,7 +17,7 @@ export class EventViewModel extends BaseViewModel<GetEventsByIdResponse> {
 
   /** Получение */
   @computed get dateStartFormatted() {
-    return dayjs(this.data.dateStart).format(DateFormat);
+    return this.data.dateStart ? dayjs(this.data.dateStart).format(DateFormat) : '';
   }
 
   /** Получение */
@@ -27,6 +27,6 @@ export class EventViewModel extends BaseViewModel<GetEventsByIdResponse> {
 
   /** Получение */
   @computed get dateEndFormatted() {
-    return dayjs(this.data.dateEnd).format(DateFormat);
+    return this.data.dateEnd ? dayjs(this.data.dateEnd).format(DateFormat) : '';
   }
 }
