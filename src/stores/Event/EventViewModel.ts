@@ -10,23 +10,35 @@ export class EventViewModel extends BaseViewModel<GetEventsByIdResponse> {
     return this.data.fullName ?? '';
   }
 
-  /** Получение */
+  @computed get description() {
+    return this.data.description;
+  }
+
+  @computed get stages() {
+    return this.data.stages;
+  }
+
+  @computed get stagesCount(): number {
+    return this.data.stages?.length || 0;
+  }
+
+  @computed get stagesNames(): string[] {
+    return this.data.stages?.map((stage) => stage.name) || [];
+  }
+
   @computed get dateStart() {
     return this.data.dateStart;
   }
 
-  /** Получение */
   @computed get dateStartFormatted() {
-    return this.data.dateStart ? dayjs(this.data.dateStart).format(DateFormat) : '';
+    return this.data.dateStart ? dayjs(this.data.dateStart).format(DateFormat) ?? '' : undefined;
   }
 
-  /** Получение */
   @computed get dateEnd() {
     return this.data.dateEnd;
   }
 
-  /** Получение */
   @computed get dateEndFormatted() {
-    return this.data.dateEnd ? dayjs(this.data.dateEnd).format(DateFormat) : '';
+    return this.data.dateEnd ? dayjs(this.data.dateEnd).format(DateFormat) ?? '' : undefined;
   }
 }

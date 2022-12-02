@@ -36,29 +36,28 @@ const Events: React.FC<EventsProps> = () => {
   };
 
   return (
-    <Container>
-      <div>
-        <Row className="justify-center">
-          <Button
-            onClick={() => {
-              openCreateModal();
-            }}
-          >
-            Добавить мероприятие
-          </Button>
-        </Row>
-        <Row className="gap-3 flex-wrap justify-evenly">
-          {
-            eventsStore.viewModel.map((event) => (
-              <EventShortCard
-                key={event.id}
-                event={event}
-                onClick={() => navigateToEvent(event.id)}
-              />
-            ))
-          }
-        </Row>
-      </div>
+    <Container
+      className="grow"
+      direction="col"
+    >
+      <Button
+        onClick={() => {
+          openCreateModal();
+        }}
+      >
+        Добавить мероприятие
+      </Button>
+      <Row className="gap-3 flex-wrap justify-evenly">
+        {
+          eventsStore.viewModel.map((event) => (
+            <EventShortCard
+              key={event.id}
+              event={event}
+              onClick={() => navigateToEvent(event.id)}
+            />
+          ))
+        }
+      </Row>
       <CreateEventModal
         onClose={closeCreateModel}
         onSuccess={createEventHandler}

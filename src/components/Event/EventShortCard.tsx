@@ -1,6 +1,8 @@
+import { Typography } from '@mui/material';
 import React from 'react';
+import { parseStyles } from '../../services/utils';
 import { EventsViewModel } from '../../stores/Events/EventsViewModel';
-import { Container, Row } from '../Flex';
+import { Container } from '../Flex';
 
 interface EventShortCardProps {
   event: EventsViewModel;
@@ -9,14 +11,33 @@ interface EventShortCardProps {
 
 const EventShortCard: React.FC<EventShortCardProps> = ({ event, onClick }) => (
   <Container
-    className="p-2 border border-bgDefault hover:shadow-bgDefault hover:shadow-lg cursor-pointer min-w-[30%]"
+    className={parseStyles(`
+      p-2 border border-bgDefault 
+      hover:shadow-bgDefault hover:shadow-lg 
+      duration-300 ease-in hover:ease-out
+      cursor-pointer min-w-[30%] max-h-[400px]
+      flex-col justify-between
+    `)}
     direction="col"
     onClick={onClick}
   >
-    <Row>
-      {event.fullName}
-    </Row>
-    <Row>{event.dateFrom}</Row>
+    <div className=" grow-1">
+      <Typography variant="h5">{event.fullName}</Typography>
+    </div>
+    {event.description && (
+      <div>
+        <Typography>Описание:</Typography>
+        <Typography>{event.description}</Typography>
+      </div>
+    )}
+    {!!event.stagesCount && (
+      <Typography>{`Этапы:${event.stagesNames.join(', ')}` }</Typography>
+    )}
+    <div className="mb-2">
+      {event.dateEndFormatted}
+      {' - '}
+      { event.dateEndFormatted ?? '...'}
+    </div>
   </Container>
 );
 export default EventShortCard;

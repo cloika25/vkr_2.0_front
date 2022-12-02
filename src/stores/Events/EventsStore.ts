@@ -9,6 +9,10 @@ export class EventsStore extends BaseEntityListStore<EventsDto, {}, EventsViewMo
     super(10);
   }
 
+  get events() {
+    return this.getRawData();
+  }
+
   /** Получение списка */
   public async fetch(): Promise<void> {
     this.runWithStateControl(async () => {

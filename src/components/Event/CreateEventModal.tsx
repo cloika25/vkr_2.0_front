@@ -62,6 +62,10 @@ export const CreateEventModal: React.FC<CreateEventModalProps> = ({ onClose, onS
           label="Дата окончания"
           type="date"
         />
+        <TextField
+          {...register('description', { required: true })}
+          label="Описание"
+        />
         <Button type="submit">
           Добавить
         </Button>
