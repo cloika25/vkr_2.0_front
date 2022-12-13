@@ -1,6 +1,6 @@
 import { Typography } from '@mui/material';
 import { observer } from 'mobx-react';
-import React, { useEffect } from 'react';
+import React, { PropsWithChildren, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { Container } from '../components/Flex';
 import { useStores } from '../hooks/useStores';
@@ -11,6 +11,10 @@ interface EventProps {
 
 const StagePreview: React.FC<{stage: StageInEvent}> = ({ stage: { name } }) => (
   <div>{name}</div>
+);
+
+const InfoBlock: React.FC<PropsWithChildren> = ({ children }) => (
+  <div className="mt-5">{children}</div>
 );
 
 const Event: React.FC<EventProps> = () => {
@@ -37,7 +41,7 @@ const Event: React.FC<EventProps> = () => {
           (name) => <span key={name}>{name}</span>,
         )}
       </div>
-      <div className="mt-5">
+      <InfoBlock>
         <Typography
           className="font-bold"
           variant="h5"
@@ -45,8 +49,8 @@ const Event: React.FC<EventProps> = () => {
           Описание
         </Typography>
         <Typography>{eventStore.viewModel.description ?? 'Автор не добавил описание для данного мероприятия'}</Typography>
-      </div>
-      <div className="mt-5">
+      </InfoBlock>
+      <InfoBlock>
         <Typography
           className="font-bold"
           variant="h5"
@@ -60,7 +64,16 @@ const Event: React.FC<EventProps> = () => {
             stage={stage}
           />
         ))}
-      </div>
+      </InfoBlock>
+      <InfoBlock>
+        <Typography
+          className="font-bold"
+          variant="h5"
+        >
+          Автор
+        </Typography>
+        <Typography>{eventStore.viewModel.authorName}</Typography>
+      </InfoBlock>
     </Container>
   );
 };

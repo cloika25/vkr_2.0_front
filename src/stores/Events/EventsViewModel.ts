@@ -13,6 +13,10 @@ export class EventsViewModel extends BaseViewModel<GetEventsByIdResponse> {
     return this.data.fullName ?? '';
   }
 
+  get authorName() {
+    return this.data.author?.name;
+  }
+
   get description() {
     return this.data.description;
   }

@@ -34,9 +34,16 @@ const EventShortCard: React.FC<EventShortCardProps> = ({ event, onClick }) => (
       <Typography>{`Этапы:${event.stagesNames.join(', ')}` }</Typography>
     )}
     <div className="mb-2">
-      {event.dateEndFormatted}
-      {' - '}
-      { event.dateEndFormatted ?? '...'}
+      <Typography>
+        Автор:
+        {' '}
+        {event.authorName}
+      </Typography>
+      <div>
+        {event.dateEndFormatted}
+        {' - '}
+        { event.dateEndFormatted ?? '...'}
+      </div>
     </div>
   </Container>
 );

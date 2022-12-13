@@ -11,7 +11,9 @@ interface CreateEventModalProps {
   open: boolean;
 }
 
-export const CreateEventModal: React.FC<CreateEventModalProps> = ({ onClose, onSuccess, open }) => {
+export const CreateEventModal: React.FC<CreateEventModalProps> = ({
+  onClose, onSuccess, open,
+}) => {
   const { register, handleSubmit } = useForm<CreateEventForm>();
 
   const formSubmitHandler:SubmitHandler<CreateEventForm> = async (value) => {

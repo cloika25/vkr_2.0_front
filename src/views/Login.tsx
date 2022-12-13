@@ -43,6 +43,7 @@ const Login: React.FC<LoginProps> = () => {
           error={!!errors.password}
           helperText={errors.password?.message}
           label="Пароль"
+          type="password"
         />
         <Button type="submit">
           Войти

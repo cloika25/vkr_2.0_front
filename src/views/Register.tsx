@@ -77,12 +77,14 @@ const Register: React.FC<RegisterProps> = () => {
           error={!!errors.password}
           helperText={errors.password?.message}
           label="Пароль"
+          type="password"
           {...register('password', { required: ValidationError.RequiredField })}
         />
         <TextField
           error={!!errors.confirmPassword}
           helperText={errors.confirmPassword?.message}
           label="Повторите пароль"
+          type="password"
           {...register('confirmPassword', { validate: validateConfirmPassword })}
         />
         <Button

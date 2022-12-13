@@ -14,6 +14,10 @@ export class EventViewModel extends BaseViewModel<GetEventsByIdResponse> {
     return this.data.description;
   }
 
+  @computed get authorName() {
+    return this.data.author?.name;
+  }
+
   @computed get stages() {
     return this.data.stages;
   }

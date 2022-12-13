@@ -18,6 +18,13 @@ export interface CreateEventForm {
 
 export type GetEventsResponse = EntityList<EventsDto>
 
+export type Author = {
+  id: number;
+  login: string;
+  name: string;
+}
+
 export type GetEventsByIdResponse = EventsDto & {
   stages: StageInEvent[];
+  author: Author;
 }
